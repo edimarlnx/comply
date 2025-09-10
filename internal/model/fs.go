@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"path/filepath"
 	"strings"
 
 	"github.com/pkg/errors"
@@ -115,7 +116,18 @@ func ReadNarratives() ([]*Document, error) {
 		n.Body = mdmd.body
 		n.FullPath = f.FullPath
 		n.ModifiedAt = f.Info.ModTime()
-		n.OutputFilename = fmt.Sprintf("%s-%s.pdf", config.Config().FilePrefix, n.Acronym)
+
+		// Determine language from filename
+		filename := filepath.Base(f.FullPath)
+		n.Language = extractLanguageFromFilename(filename)
+
+		// Adjust output filename for translated documents
+		if n.Language != "" {
+			n.OutputFilename = fmt.Sprintf("%s-%s-%s.pdf", config.Config().FilePrefix, n.Acronym, n.Language)
+		} else {
+			n.OutputFilename = fmt.Sprintf("%s-%s.pdf", config.Config().FilePrefix, n.Acronym)
+		}
+
 		narratives = append(narratives, n)
 	}
 
@@ -144,6 +156,18 @@ func ReadProcedures() ([]*Procedure, error) {
 		p.Body = mdmd.body
 		p.FullPath = f.FullPath
 		p.ModifiedAt = f.Info.ModTime()
+
+		// Determine language from filename
+		filename := filepath.Base(f.FullPath)
+		p.Language = extractLanguageFromFilename(filename)
+
+		// Adjust output filename for translated documents
+		if p.Language != "" {
+			p.OutputFilename = fmt.Sprintf("%s-%s-%s.pdf", config.Config().FilePrefix, p.ID, p.Language)
+		} else {
+			p.OutputFilename = fmt.Sprintf("%s-%s.pdf", config.Config().FilePrefix, p.ID)
+		}
+
 		procedures = append(procedures, p)
 	}
 
@@ -172,11 +196,35 @@ func ReadPolicies() ([]*Document, error) {
 		p.Body = mdmd.body
 		p.FullPath = f.FullPath
 		p.ModifiedAt = f.Info.ModTime()
-		p.OutputFilename = fmt.Sprintf("%s-%s.pdf", config.Config().FilePrefix, p.Acronym)
+
+		// Determine language from filename
+		filename := filepath.Base(f.FullPath)
+		p.Language = extractLanguageFromFilename(filename)
+
+		// Adjust output filename for translated documents
+		if p.Language != "" {
+			p.OutputFilename = fmt.Sprintf("%s-%s-%s.pdf", config.Config().FilePrefix, p.Acronym, p.Language)
+		} else {
+			p.OutputFilename = fmt.Sprintf("%s-%s.pdf", config.Config().FilePrefix, p.Acronym)
+		}
+
 		policies = append(policies, p)
 	}
 
 	return policies, nil
+}
+
+// extractLanguageFromFilename extracts language code from filename
+func extractLanguageFromFilename(filename string) string {
+	parts := strings.Split(filename, ".")
+	if len(parts) >= 3 {
+		// Check if second-to-last part looks like a language code
+		langPart := parts[len(parts)-2]
+		if len(langPart) >= 2 && (strings.Contains(langPart, "-") || len(langPart) == 2) {
+			return langPart
+		}
+	}
+	return ""
 }
 
 type metadataMarkdown struct {

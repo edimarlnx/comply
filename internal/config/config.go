@@ -38,6 +38,15 @@ type Project struct {
 	FilePrefix     string                 `yaml:"filePrefix"`
 	Tickets        map[string]interface{} `yaml:"tickets"`
 	ApprovedBranch string                 `yaml:"approvedBranch"`
+	Translation    *TranslationConfig     `yaml:"translation,omitempty"`
+}
+
+type TranslationConfig struct {
+	Enabled   bool     `yaml:"enabled"`
+	Languages []string `yaml:"languages"`
+	Provider  string   `yaml:"provider"`
+	Model     string   `yaml:"model,omitempty"`
+	APIKey    string   `yaml:"apiKey,omitempty"`
 }
 
 // SetPandoc records pandoc availability during initialization

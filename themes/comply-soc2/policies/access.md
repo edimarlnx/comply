@@ -52,6 +52,24 @@ a. *When an employee changes roles within the organization:*
 
 a. *Review of accounts and permissions:*
 
-    i. Each month, IT and HR will review accounts and permission levels for accuracy. 
+    i. Each month, IT and HR will review accounts and permission levels for accuracy.
+    
+    i. Access reviews must evaluate all user types including employees, contractors, vendors, and system accounts.
+    
+    i. The review process must verify that access remains appropriate for the user's current role and responsibilities.
+    
+    i. Any inappropriate or unnecessary access must be revoked immediately.
+
+a. *Enhanced Access Controls for 2022 TSC Compliance:*
+
+    i. Access controls must be evaluated across all infrastructure components including servers, databases, applications, and network devices.
+    
+    i. Privileged access must be strictly controlled with additional authentication requirements and monitoring.
+    
+    i. System accounts and service accounts must be inventoried, documented, and regularly reviewed.
+    
+    i. Access to IT tools and administrative interfaces must be restricted to authorized personnel only.
+    
+    i. Device access and recovery procedures must be documented and tested regularly. 
 
 

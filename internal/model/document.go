@@ -12,4 +12,5 @@ type Document struct {
 	OutputFilename string
 	ModifiedAt     time.Time
 	Body           string
+	Language       string // Language code (e.g., "en", "pt-BR")
 }

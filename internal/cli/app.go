@@ -58,6 +58,7 @@ func newApp() *cli.App {
 	app.Commands = append(app.Commands, beforeCommand(serveCommand, projectMustExist, notifyVersion))
 	app.Commands = append(app.Commands, beforeCommand(syncCommand, projectMustExist, notifyVersion))
 	app.Commands = append(app.Commands, beforeCommand(todoCommand, projectMustExist, notifyVersion))
+	app.Commands = append(app.Commands, beforeCommand(translateCommand, projectMustExist, notifyVersion))
 
 	// Plugins
 	github.Register()

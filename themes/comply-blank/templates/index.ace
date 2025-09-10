@@ -133,15 +133,22 @@ html lang=en
           tr
             th Name
             th Acronym
-            th PDF
+            th PDF Downloads
         tbody
-          {{range .Narratives }}
+          {{range .GroupedNarratives }}
           tr
             td {{.Name}}
             td {{.Acronym}}
             td
-              a href={{.OutputFilename}} target=_blank
-                {{.OutputFilename}}
+              {{range .Versions}}
+                {{if .Language}}
+                  a.button.is-small.is-info href={{.OutputFilename}} target=_blank style="margin-right: 5px;"
+                    {{.Language}}
+                {{else}}
+                  a.button.is-small.is-primary href={{.OutputFilename}} target=_blank style="margin-right: 5px;"
+                    | EN
+                {{end}}
+              {{end}}
           {{end}}
     #policies.section.top-nav.container.content
       blockquote
@@ -154,15 +161,22 @@ html lang=en
           tr
             th Name
             th Acronym
-            th PDF
+            th PDF Downloads
         tbody
-          {{range .Policies }}
+          {{range .GroupedPolicies }}
           tr
             td {{.Name}}
             td {{.Acronym}}
             td
-              a href={{.OutputFilename}} target=_blank
-                {{.OutputFilename}}
+              {{range .Versions}}
+                {{if .Language}}
+                  a.button.is-small.is-info href={{.OutputFilename}} target=_blank style="margin-right: 5px;"
+                    {{.Language}}
+                {{else}}
+                  a.button.is-small.is-primary href={{.OutputFilename}} target=_blank style="margin-right: 5px;"
+                    | EN
+                {{end}}
+              {{end}}
           {{end}}
     #procedures.section.top-nav.container.content
       blockquote

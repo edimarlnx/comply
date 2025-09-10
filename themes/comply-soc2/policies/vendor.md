@@ -36,11 +36,19 @@ a. All security incidents by IT vendors or partners must be documented in accord
 
 a. The organization must adhere to the terms of all Service Level Agreements (SLAs) entered into with IT vendors. As terms are updated, and as new ones are entered into, the organization must implement any changes or controls needed to ensure it remains in compliance. 
 
-a. Before entering into a contract and gaining access to the parent organization’s information systems, IT vendors must undergo a risk assessment. 
+a. Before entering into a contract and gaining access to the parent organization's information systems, IT vendors must undergo a comprehensive risk assessment. 
 
     i. Security risks related to IT vendors and partners must be identified during the risk assessment process. 
     
-    i. The risk assessment must identify risks related to information and communication technology, as well as risks related to IT vendor supply chains, to include sub-suppliers. 
+    i. The risk assessment must identify risks related to information and communication technology, as well as risks related to IT vendor supply chains, to include sub-suppliers.
+    
+    i. Vulnerability assessments must be conducted to evaluate potential vulnerabilities arising from vendor relationships and business partnerships.
+    
+    i. The assessment must evaluate the likelihood and potential impact of identified risks, including consideration of threat sources and system vulnerabilities.
+    
+    i. Vendors must provide evidence of their security controls, certifications (such as SOC 2), and compliance with relevant security frameworks.
+    
+    i. Critical vendors must undergo periodic reassessment to ensure ongoing compliance with security requirements. 
 
 a. IT vendors and partners must ensure that organizational records are protected, safeguarded, and disposed of securely. The organization strictly adheres to all applicable legal, regulatory and contractual requirements regarding the collection, processing, and transmission of sensitive data such as Personally-Identifiable Information (PII). 
 

@@ -30,16 +30,24 @@ type stats struct {
 
 type renderData struct {
 	// duplicates Project.OrganizationName
-	Name       string
-	Project    *project
-	Stats      *stats
-	Narratives []*model.Document
-	Policies   []*model.Document
-	Procedures []*model.Procedure
-	Standards  []*model.Standard
-	Tickets    []*model.Ticket
-	Controls   []*control
-	Links      *model.TicketLinks
+	Name              string
+	Project           *project
+	Stats             *stats
+	Narratives        []*model.Document
+	Policies          []*model.Document
+	Procedures        []*model.Procedure
+	Standards         []*model.Standard
+	Tickets           []*model.Ticket
+	Controls          []*control
+	Links             *model.TicketLinks
+	GroupedNarratives []*DocumentGroup
+	GroupedPolicies   []*DocumentGroup
+}
+
+type DocumentGroup struct {
+	Name     string            // Original name (from English version)
+	Acronym  string            // Document acronym
+	Versions []*model.Document // All language versions
 }
 
 type control struct {
@@ -93,6 +101,10 @@ func load() (*model.Data, *renderData, error) {
 	rd.Project = project
 	rd.Name = project.OrganizationName
 	rd.Controls = controls
+
+	// Group documents by acronym for multi-language support
+	rd.GroupedNarratives = groupDocumentsByAcronym(modelData.Narratives)
+	rd.GroupedPolicies = groupDocumentsByAcronym(modelData.Policies)
 
 	ts, err := config.Config().TicketSystem()
 	if err != nil {
@@ -154,4 +166,47 @@ func addStats(modelData *model.Data, renderData *renderData) {
 	}
 
 	renderData.Stats = stats
+}
+
+// groupDocumentsByAcronym groups documents by acronym and creates DocumentGroup structures
+func groupDocumentsByAcronym(docs []*model.Document) []*DocumentGroup {
+	groups := make(map[string][]*model.Document)
+
+	// Group documents by acronym
+	for _, doc := range docs {
+		groups[doc.Acronym] = append(groups[doc.Acronym], doc)
+	}
+
+	var result []*DocumentGroup
+
+	for acronym, versions := range groups {
+		// Sort versions: English (no language) first, then alphabetically by language
+		sort.Slice(versions, func(i, j int) bool {
+			if versions[i].Language == "" && versions[j].Language != "" {
+				return true
+			}
+			if versions[i].Language != "" && versions[j].Language == "" {
+				return false
+			}
+			return versions[i].Language < versions[j].Language
+		})
+
+		// Use the English version (first one) for the name
+		englishVersion := versions[0]
+
+		group := &DocumentGroup{
+			Name:     englishVersion.Name,
+			Acronym:  acronym,
+			Versions: versions,
+		}
+
+		result = append(result, group)
+	}
+
+	// Sort groups alphabetically by name
+	sort.Slice(result, func(i, j int) bool {
+		return result[i].Name < result[j].Name
+	})
+
+	return result
 }

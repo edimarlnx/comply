@@ -127,3 +127,45 @@ func Build(output string, live bool) error {
 
 	return nil
 }
+
+// BuildTranslated generates translated PDF and HTML output
+func BuildTranslated(outputDir, targetLang, provider string, live bool) error {
+	// Create language-specific output directory
+	langOutputDir := filepath.Join(outputDir, targetLang)
+	err := os.RemoveAll(langOutputDir)
+	if err != nil {
+		return errors.Wrap(err, "unable to remove files from translated output directory")
+	}
+
+	err = os.MkdirAll(langOutputDir, os.FileMode(0755))
+	if err != nil {
+		return errors.Wrap(err, "unable to create translated output directory")
+	}
+
+	var wg sync.WaitGroup
+	errCh := make(chan error, 0)
+	wgCh := make(chan struct{})
+
+	// PDF translation
+	wg.Add(1)
+	go pdfTranslated(langOutputDir, targetLang, provider, live, errCh, &wg)
+
+	// HTML translation
+	wg.Add(1)
+	go htmlTranslated(langOutputDir, targetLang, provider, live, errCh, &wg)
+
+	// WG monitor
+	go func() {
+		wg.Wait()
+		close(wgCh)
+	}()
+
+	select {
+	case <-wgCh:
+		fmt.Printf("Translation complete: documents generated in %s\n", langOutputDir)
+	case err := <-errCh:
+		return errors.Wrap(err, "error during translation build")
+	}
+
+	return nil
+}

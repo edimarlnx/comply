@@ -9,11 +9,16 @@ High-level TODO created by [comply](https://github.com/strongdm/comply)
 - [ ] Verify `comply sync` executes without errors
 
 ## Authoring Phase (weeks)
-- [ ] Validate standards/, pruning as necessary
+- [x] Validate standards/, pruning as necessary
+    - [x] Updated to TSC-2022 with revised points of focus
 - [ ] Customize narratives/
-- [ ] Customize policies/
-    - [ ] Distribute controls among policies
-    - [ ] Ensure policies address all controls
+- [x] Customize policies/
+    - [x] Enhanced vendor management policy for CC9.2 compliance
+    - [x] Created asset inventory policy for CC2.1 requirements  
+    - [x] Enhanced access policy for CC6 guidance
+    - [x] Created patch management policy for CC8.1 compliance
+    - [ ] Distribute remaining controls among policies
+    - [ ] Ensure all policies address latest TSC-2022 controls
 - [ ] Customize procedures/
     - [ ] Distribute controls among procedures
     - [ ] Create valid ticket templates
