@@ -301,7 +301,7 @@ func complyBlankTemplatesIndexAce() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "comply-blank/templates/index.ace", size: 8288, mode: os.FileMode(420), modTime: time.Unix(1757456508, 0)}
+	info := bindataFileInfo{name: "comply-blank/templates/index.ace", size: 8288, mode: os.FileMode(420), modTime: time.Unix(1757470844, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -341,7 +341,7 @@ func complySoc2TodoMd() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "comply-soc2/TODO.md", size: 1758, mode: os.FileMode(420), modTime: time.Unix(1757386678, 0)}
+	info := bindataFileInfo{name: "comply-soc2/TODO.md", size: 1758, mode: os.FileMode(420), modTime: time.Unix(1757470844, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -501,7 +501,7 @@ func complySoc2PoliciesAccessMd() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "comply-soc2/policies/access.md", size: 3129, mode: os.FileMode(420), modTime: time.Unix(1757386630, 0)}
+	info := bindataFileInfo{name: "comply-soc2/policies/access.md", size: 3129, mode: os.FileMode(420), modTime: time.Unix(1757470844, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -541,7 +541,7 @@ func complySoc2PoliciesAssetMd() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "comply-soc2/policies/asset.md", size: 4307, mode: os.FileMode(420), modTime: time.Unix(1757386605, 0)}
+	info := bindataFileInfo{name: "comply-soc2/policies/asset.md", size: 4307, mode: os.FileMode(420), modTime: time.Unix(1757470844, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -901,7 +901,7 @@ func complySoc2PoliciesPatchMd() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "comply-soc2/policies/patch.md", size: 5020, mode: os.FileMode(420), modTime: time.Unix(1757386657, 0)}
+	info := bindataFileInfo{name: "comply-soc2/policies/patch.md", size: 5020, mode: os.FileMode(420), modTime: time.Unix(1757470844, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1041,7 +1041,7 @@ func complySoc2PoliciesVendorMd() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "comply-soc2/policies/vendor.md", size: 3747, mode: os.FileMode(420), modTime: time.Unix(1757386570, 0)}
+	info := bindataFileInfo{name: "comply-soc2/policies/vendor.md", size: 3747, mode: os.FileMode(420), modTime: time.Unix(1757470844, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1181,7 +1181,7 @@ func complySoc2StandardsReadmeMd() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "comply-soc2/standards/README.md", size: 803, mode: os.FileMode(420), modTime: time.Unix(1757362209, 0)}
+	info := bindataFileInfo{name: "comply-soc2/standards/README.md", size: 803, mode: os.FileMode(420), modTime: time.Unix(1757470844, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1221,7 +1221,7 @@ func complySoc2StandardsTsc2022Yml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "comply-soc2/standards/TSC-2022.yml", size: 17820, mode: os.FileMode(420), modTime: time.Unix(1757362096, 0)}
+	info := bindataFileInfo{name: "comply-soc2/standards/TSC-2022.yml", size: 17820, mode: os.FileMode(420), modTime: time.Unix(1757470844, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -1261,7 +1261,7 @@ func complySoc2TemplatesIndexAce() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "comply-soc2/templates/index.ace", size: 8288, mode: os.FileMode(420), modTime: time.Unix(1757456496, 0)}
+	info := bindataFileInfo{name: "comply-soc2/templates/index.ace", size: 8288, mode: os.FileMode(420), modTime: time.Unix(1757470844, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
